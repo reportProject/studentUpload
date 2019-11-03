@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.report.mapper.StudentUploadedFileMapper">
+	<select id="findByNo" resultType="Homework">
+		SELECT * FROM Homework WHERE hw_no = #{hw_no}
+	</select>
+	
+	<insert id="insert" useGeneratedKeys="true" keyProperty="hw_no">
+		INSERT Homework (student_no, notice_no, file_name, file_size, submitdate, grade, data)
+		VALUES (#{student_no}, #{notice_no}, #{file_name}, #{file_size}, #{submitdate}, #{grade}, #{data})
+	</insert>
+	
+	<delete id="deleteByNo">
+		DELETE FROM Homework WHERE hw_no = #{hw_no}
+	</delete>
+	
+	<select id="findAll" resultType="Homework">
+		SELECT * FROM Homework
+	</select>
+</mapper>
